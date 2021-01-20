@@ -1,0 +1,29 @@
+﻿@model Retrospective.Models.ActionPlanCommentsModelView
+@{
+    ViewBag.Title = "Action Plan Comments";
+}
+
+<div id="page-wrapper">
+    <br />
+    <div class="container-fluid">
+        <br />
+        <b>@ViewBag.Title: </b>
+        <div class="table-hover" style="overflow-x:auto">
+            <table class="table table-bordered table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.ActionPlans)
+                {
+                    <tr>
+                        <td>@Html.ActionLink(@item, "Index", "ActionPlan", new { Comment = @item }, null) </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+</div>
+
