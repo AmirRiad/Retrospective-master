@@ -8,6 +8,18 @@
     <div class="container-fluid">
         <br />
         <b>@ViewBag.Title: </b>
+
+        @using (Html.BeginForm("Search", "MostCommonWords", FormMethod.Get))
+        {
+            <br />
+
+            <b> Comment: </b>
+            @Html.TextArea("Comment", Model.Comment, new { @class = "form-control" })
+            <br />
+
+            <input type="submit" name="submit" value="Search" />
+        }
+
         <div class="table-hover" style="overflow-x:auto">
             <table class="table table-bordered table-responsive table-hover">
                 <thead>
@@ -18,7 +30,7 @@
                 @foreach (var word in Model.MostCommonWords)
                 {
                     <tr>
-                        <td>@Html.ActionLink(@word.Item, "Index", "ActionPlanComments", new {Comment = @word.Item}, null) </td>
+                        <td>@Html.ActionLink(@word.Item, "Index", "ActionPlanComments", new { Comment = @word.Item }, null) </td>
                     </tr>
                 }
             </table>

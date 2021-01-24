@@ -8,5 +8,6 @@ namespace Retrospective.Models
     public class MostCommonWordsModelView
     {
         public List<MostDuplicatedWords_Result> MostCommonWords { get; set; }
+        public string Comment { get; set; }
     }
 }
