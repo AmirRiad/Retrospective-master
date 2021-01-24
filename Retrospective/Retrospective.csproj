@@ -52,7 +52,7 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Excel">
-      <HintPath>..\..\..\..\Desktop\Excel.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Import-Export-from-Excel-master\Excel.dll</HintPath>
     </Reference>
     <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
@@ -147,6 +147,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ActionPlanController.cs" />
     <Compile Include="Controllers\ActionPlanCommentsController.cs" />
     <Compile Include="Controllers\MostCommonWordsController.cs" />
@@ -285,6 +286,7 @@
     <Content Include="Views\ActionPlan\Index.cshtml" />
     <Content Include="Views\MostCommonWords\Index.cshtml" />
     <Content Include="Views\ActionPlanComments\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -334,6 +336,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

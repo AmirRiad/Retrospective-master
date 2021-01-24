@@ -37,6 +37,27 @@ namespace Safeer2.UI.Controllers
             AgileTeamWeights.Add(name, weight);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
+
+        
+        public ActionResult Reset()
+        {
+            AgileTeamWeights = new Dictionary<string, string>() {
+          { "Ali","80" },
+          { "Amir", "80" },
+          { "Ahmed","80" },
+          { "Waad", "80" },
+          { "Keerthi","80" },
+          { "Mallesh", "80" },
+          { "Asif","80" },
+          { "Sarah", "80" },
+          { "Amjad","80" },
+          { "Alhanouf", "80" },
+          { "Bashyer","80" },
+          { "Abeer", "80" },
+          { "Ala","80" }
+      };
+            return Json(AgileTeamWeights, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult GetWeight()
         {
             return Json(AgileTeamWeights,JsonRequestBehavior.AllowGet);

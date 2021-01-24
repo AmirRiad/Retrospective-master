@@ -84,6 +84,12 @@
     }
 </style>
 
+
+    <input type="button" value="Reset" onclick="Reset()" />
+
+
+<input type="button" value="Show Other Result" onclick="retrieveAgileTeamWeight()" />
+
 <br />
 <div id="AgileTeamMembers">  </div>
 <div class="row">
@@ -129,50 +135,61 @@
             },
             function (data, status) {
                 //TODO
-                retrieveAgileTeamWeight();
+                //retrieveAgileTeamWeight();
             });
 
 
 
     }
+    function Reset() {
+        $.get("@Url.Action("Reset")", function (data, status) {
+            DrawEstimation(data, status);
+        });
+    }
+
+
 
     function retrieveAgileTeamWeight() {
         $.get("@Url.Action("GetWeight")", function (data, status) {
-            var entries = Object.entries(data)
-            console.log(entries)
-
-            $("[id$='_result']").empty();
-
-
-            var values = ["1", "3", "5", "8", "13", "20", "40", "0", "80"];
-            for (var k = 0; k < entries.length; k++) {
-
-                var span = "<span class='numberCircle'><span>" + values[k] + "</span></span>";
-                if (values[k] == "80") {
-                    span = "<span class='numberCircle'><span>?</span></span>";
-                }
-                $("#weight_" + values[k]+ "_result").append("<div>" + span + "</div>");
-            }
-            for (var i = 0; i < entries.length; i++) {
-                var id = entries[i][1];
-                var name = entries[i][0];
-
-
-
-                $("#weight_" + entries[i][1] + "_result").append("<div class='paddingCss'>" + entries[i][0] + "</div>");
-
-                $("#weight_1" + name).removeClass("selected");
-                $("#weight_3" + name).removeClass("selected");
-                $("#weight_5" + name).removeClass("selected");
-                $("#weight_8" + name).removeClass("selected");
-                $("#weight_13" + name).removeClass("selected");
-                $("#weight_20" + name).removeClass("selected");
-                $("#weight_40" + name).removeClass("selected");
-                $("#weight_0" + name).removeClass("selected");
-                $("#weight_80" + name).removeClass("selected");
-                $("#weight_" + id + name).addClass("selected");
-            }
+            DrawEstimation(data, status);
         });
+    }
+
+    function DrawEstimation(data, status) {
+        var entries = Object.entries(data)
+        console.log(entries)
+
+        $("[id$='_result']").empty();
+
+
+        var values = ["1", "3", "5", "8", "13", "20", "40", "0", "80"];
+        for (var k = 0; k < entries.length; k++) {
+
+            var span = "<span class='numberCircle'><span>" + values[k] + "</span></span>";
+            if (values[k] == "80") {
+                span = "<span class='numberCircle'><span>?</span></span>";
+            }
+            $("#weight_" + values[k] + "_result").append("<div>" + span + "</div>");
+        }
+        for (var i = 0; i < entries.length; i++) {
+            var id = entries[i][1];
+            var name = entries[i][0];
+
+
+
+            $("#weight_" + entries[i][1] + "_result").append("<div class='paddingCss'>" + entries[i][0] + "</div>");
+
+            $("#weight_1" + name).removeClass("selected");
+            $("#weight_3" + name).removeClass("selected");
+            $("#weight_5" + name).removeClass("selected");
+            $("#weight_8" + name).removeClass("selected");
+            $("#weight_13" + name).removeClass("selected");
+            $("#weight_20" + name).removeClass("selected");
+            $("#weight_40" + name).removeClass("selected");
+            $("#weight_0" + name).removeClass("selected");
+            $("#weight_80" + name).removeClass("selected");
+            $("#weight_" + id + name).addClass("selected");
+        }
     }
 
        function FillUsers() {
@@ -214,7 +231,7 @@
         });
     }
 
-        setInterval(retrieveAgileTeamWeight, 5000);
+        //setInterval(retrieveAgileTeamWeight, 5000);
         FillUsers();
         retrieveAgileTeamWeight();
 
